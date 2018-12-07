@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>index</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+
+		<br></br> <a href="login">Se connecter</a> <br></br>
+
+		<div class="panel-group" style="margin-top: 40px">
+
+			<div class="panel panel-primary">
+
+
+
+				<p class="admin-message-text text-center">Welcome to my brand
+					new site</p>
+				<!--  -->
+
+
+				<div th:each="article: ${articles}" class="container">
+					<div th:if="${article.visible==true}">
+						<div>
+							<span th:value="${article.Name}" th:text="${article.Name}"></span>
+							<span th:value="${article.Categorie.Name}"
+								th:text="${article.Categorie.Name}"></span> Nombre de points: <span
+								th:value="${article.NbPoints}" th:text="${article.NbPoints}"></span>
+							Prix: <span th:value="${article.Price}"
+								th:text="${article.Price}"></span>€ Stock: <span
+								th:value="${article.Stock}" th:text="${article.Stock}"></span>
+						</div>
+					</div>
+				</div>
+				<!--  -->
+			</div>
+
+		</div>
+
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

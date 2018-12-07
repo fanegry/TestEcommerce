@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head >
+<title>Admin Page</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<div th:replace="header :: header"></div>
+	<div class="container">
+	
+		<form th:action="@{/logout}" method="get">
+			<button class="btn btn-md btn-danger btn-block" name="registration"
+				type="Submit">Déconnexion</button>
+		</form>    
+		
+		<div class="panel-group" style="margin-top:40px">
+		
+			<div class="panel panel-primary">
+			
+				<div class="panel-heading">
+					<span th:utext="${userName}"></span>
+				</div>
+				
+				<p class="admin-message-text text-center" th:text="${userMessage}">
+				
+				</p>
+			<!--  -->
+			<h1><span th:text="${article.name}"></span></h1>
+		
+		<div>
+			<div>Id : <span th:text="${article.id}"></span></div>
+			<div>Nom :  <span th:text="${article.name}"></span></div>
+			<div th:if="${article.categorie}!=null">
+				Catégorie : <span th:text="${article.categorie.name}"></span>
+				    <div> Nombre de points: <span
+					th:value="${article.NbPoints}" th:text="${article.NbPoints}"></span>     <div>Prix:
+				<span th:value="${article.Price}" th:text="${article.Price}"></span>€    </div> <div>Stock:  
+				<span th:value="${article.Stock}" th:text="${article.Stock}"></span></div>
+			</div>
+		</div>
+			
+			<!--  -->
+			</div>
+			
+		</div>
+		
+	</div>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CreateCategorie</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div th:replace="header :: header"></div>
+	<div class="container">
+
+		<form th:action="@{/logout}" method="get">
+			<button class="btn btn-md btn-danger btn-block" name="registration"
+				type="Submit">Déconnexion</button>
+		</form>
+
+		<div class="panel-group" style="margin-top: 40px">
+
+			<div class="panel panel-primary">
+
+				<div class="panel-heading">
+					<span th:utext="${userName}"></span>
+				</div>
+				<p class="admin-message-text text-center">Créer votre catégorie
+				</p>
+				<!--  -->
+				<form th:action="@{/app/create_article}" th:object="${articleDTO}"
+					method="post" class="form-horizontal" role="form">
+					<div class="form-group">
+						<div class="col-sm-9">
+							<div class="col-sm-9">
+							
+								<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="validation-message"></label> <input type="text"
+									th:field="*{name}" placeholder="Nom de l'article" class="form-control" />
+							</div>
+						</div>
+					</div>
+
+<div class="form-group">
+						<div class="col-sm-9">
+							<div class="col-sm-9">
+								<label th:if="${#fields.hasErrors('NbPoints')}" th:errors="*{NbPoints}"
+									class="validation-message"></label> <input type="text"
+									th:field="*{NbPoints}" placeholder="Nombre de points" class="form-control" />
+							</div>
+						</div>
+					</div>
+
+<div class="form-group">
+						<div class="col-sm-9">
+							<div class="col-sm-9">
+							<input type="text"
+									th:field="*{price}" placeholder="prix" class="form-control" />
+							</div>
+						</div>
+					</div>
+
+<div class="form-group">
+						<div class="col-sm-9">
+							<div class="col-sm-9">
+								<label th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"
+									class="validation-message"></label> <input type="text"
+									th:field="*{stock}" placeholder="stock" class="form-control" />
+							</div>
+						</div>
+					</div>
+
+<div class="form-group">
+						<div class="col-sm-9">
+							<div class="col-sm-9">
+							Article Visible?
+								<label th:if="${#fields.hasErrors('visible')}" th:errors="*{visible}"
+									class="validation-message"></label>
+									<select name="visible" class="form-control">
+									<option selected value="true">Oui</option>
+									<option value="false">Non</option>
+									</select>
+							</div>
+						</div>
+					</div>
+
+<div class="form-group">
+						<div class="col-sm-9">
+							<div class="col-sm-9">
+							Choisissez la catégorie
+									<select th:field="*{categorie}" name="categorie_Id" class="form-control">
+									<option th:each="categorie: ${categories}" th:value="${categorie.id}"
+									th:text="${categorie.name}">
+									</option>
+									</select>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							<button type="submit" class="btn btn-primary btn-block">Créer
+								Article</button>
+						</div>
+					</div>
+				</form>
+				<!--  -->
+			</div>
+
+		</div>
+
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
